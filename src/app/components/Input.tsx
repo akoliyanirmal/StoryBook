@@ -1,28 +1,16 @@
 import React from "react";
 
 export interface InputProps {
-  name?: string;
   type?: "text" | "password" | "number";
   placeholder?: string;
-  value?: string | number;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({
-  name = "field name",
-  type = "text",
-  placeholder,
-  value,
-  onChange,
-}: InputProps) => {
+export const Input = ({ type = "text", placeholder }: InputProps) => {
   return (
     <input
       type={type}
-      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-black border-gray-400"
       placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      name={name}
     />
   );
 };

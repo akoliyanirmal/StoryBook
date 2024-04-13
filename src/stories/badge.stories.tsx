@@ -11,7 +11,7 @@ export default {
 
 const Template: StoryFn = (args) => <Badge count={0} {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const BadgeIcon = Template.bind({});
+BadgeIcon.args = {
   count: 0,
 };

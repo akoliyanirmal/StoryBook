@@ -20,8 +20,8 @@ export default {
 
 const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Image = Template.bind({});
+Image.args = {
   src: "https://i0.wp.com/www.tripstodiscover.com/wp-content/uploads/2016/08/bigstock-Giant-Panda-Sad-Tired-Bore-81842441-1.jpg?resize=784%2C588",
   alt: "Avatar",
   size: "medium",

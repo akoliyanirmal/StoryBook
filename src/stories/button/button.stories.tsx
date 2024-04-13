@@ -1,46 +1,35 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
-import { Button } from "../../app/components/button";
+import React from "react";
+import { Meta, StoryFn } from "@storybook/react";
+import SimpleButton from "@/app/components/Button";
 
-const meta: Meta = {
-  title: "Example/Button",
-  component: Button,
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
+export default {
+  title: "Button",
+  component: SimpleButton,
   argTypes: {
-    backgroundColor: { control: "color" },
+    children: { control: "text" },
+    classes: { control: "text" },
+    color: {
+      control: "radio",
+      options: ["default", "inherit", "primary", "secondary"],
+    },
+    disabled: { control: "boolean" },
+    disableElevation: { control: "boolean" },
+    disableFocusRipple: { control: "boolean" },
+    disableRipple: { control: "boolean" },
+    endIcon: { control: "text" },
+    fullWidth: { control: "boolean" },
+    href: { control: "text" },
+    size: { control: "select", options: ["small", "medium", "large"] },
+    startIcon: { control: "text" },
+    sx: { control: "object" },
+    variant: { control: "select", options: ["text", "outlined", "contained"] },
+    onClick: { action: "clicked" },
   },
-  args: { onClick: fn() },
-};
+} as Meta;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+const Template: StoryFn = (args) => <SimpleButton {...args} />;
 
-export const Primary: Story = {
-  args: {
-    primary: true,
-    label: "Primary Button",
-  },
-};
-
-export const Secondary: Story = {
-  args: {
-    label: "Secondary Button",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "large",
-    label: "Large Button",
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: "small",
-    label: "Small Button",
-  },
+export const BTN = Template.bind({});
+BTN.args = {
+  children: "Button",
 };

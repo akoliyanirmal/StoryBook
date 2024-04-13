@@ -23,8 +23,8 @@ const Template: StoryFn<RadioProps> = (args) => {
   );
 };
 
-export const Default = Template.bind({});
-Default.args = {
+export const RadioButton = Template.bind({});
+RadioButton.args = {
   options: [
     { label: "Male", value: "male" },
     { label: "Female", value: "female" },

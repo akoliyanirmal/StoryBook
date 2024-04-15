@@ -8,6 +8,15 @@ const config: StorybookConfig = {
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
+    "@storybook/preset-create-react-app",
+    {
+      name: "@storybook/preset-create-react-app",
+      options: {
+        craOverrides: {
+          fileLoaderExcludes: ["less", "scss"],
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/nextjs",

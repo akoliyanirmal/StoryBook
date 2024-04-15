@@ -7,23 +7,14 @@ export default {
   component: SimpleButton,
   argTypes: {
     children: { control: "text" },
-    classes: { control: "text" },
-    color: {
-      control: "radio",
-      options: ["default", "inherit", "primary", "secondary"],
-    },
     disabled: { control: "boolean" },
-    disableElevation: { control: "boolean" },
-    disableFocusRipple: { control: "boolean" },
-    disableRipple: { control: "boolean" },
     endIcon: { control: "text" },
     fullWidth: { control: "boolean" },
     href: { control: "text" },
     size: { control: "select", options: ["small", "medium", "large"] },
     startIcon: { control: "text" },
-    sx: { control: "object" },
-    variant: { control: "select", options: ["text", "outlined", "contained"] },
-    onClick: { action: "clicked" },
+    onClick: { action: "Button clicked" },
+    backgroundColor: { control: "color" },
   },
 } as Meta;
 

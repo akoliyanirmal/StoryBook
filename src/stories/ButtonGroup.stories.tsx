@@ -5,6 +5,43 @@ import CustomButtonGroup from "@/app/components/ButtonGroup";
 export default {
   title: "ButtonGroup",
   component: CustomButtonGroup,
+  argTypes: {
+    children: { control: "text" },
+    color: {
+      control: {
+        type: "select",
+        options: [
+          "primary",
+          "secondary",
+          "error",
+          "info",
+          "success",
+          "warning",
+        ],
+      },
+    },
+    disabled: { control: "boolean" },
+    fullWidth: { control: "boolean" },
+    orientation: {
+      control: {
+        type: "select",
+        options: ["horizontal", "vertical"],
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"],
+      },
+    },
+    variant: {
+      control: {
+        type: "select",
+        options: ["text", "outlined", "contained"],
+      },
+    },
+    onClick: { action: "Button clicked" },
+  },
 } as Meta;
 
 const Template: StoryFn<any> = (args) => (
@@ -15,16 +52,8 @@ const Template: StoryFn<any> = (args) => (
   </CustomButtonGroup>
 );
 
-export const Default = Template.bind({});
-Default.args = {};
-
-export const WithProps = Template.bind({});
-WithProps.args = {
-  children: [
-    <button key={1}>One</button>,
-    <button key={2}>Two</button>,
-    <button key={3}>Three</button>,
-  ],
+export const GroupButton = Template.bind({});
+GroupButton.args = {
   color: "primary",
   disabled: false,
   fullWidth: false,

@@ -10,8 +10,13 @@ export default {
     disabled: { control: "boolean" },
     endIcon: { control: "text" },
     fullWidth: { control: "boolean" },
+    // fullWidthPixel: { control: "number" },
     href: { control: "text" },
     size: { control: "select", options: ["small", "medium", "large"] },
+    Colorvariant: {
+      control: "select",
+      options: ["primary", "secondary", "danger", "success"],
+    },
     startIcon: { control: "text" },
     onClick: { action: "Button clicked" },
     backgroundColor: { control: "color" },
@@ -23,4 +28,7 @@ const Template: StoryFn = (args) => <SimpleButton {...args} />;
 export const BTN = Template.bind({});
 BTN.args = {
   children: "Button",
+  Colorvariant: "primary",
+  fullWidth: false,
+  // fullWidthPixel: 120,
 };

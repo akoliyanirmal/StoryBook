@@ -2,12 +2,13 @@ import React from "react";
 
 interface ButtonGroupProps {
   children: React.ReactNode;
-  color?: string;
+  color?: "primary" | "secondary" | "error" | "info" | "success" | "warning";
   disabled?: boolean;
   fullWidth?: boolean;
   orientation?: "horizontal" | "vertical";
   size?: "small" | "medium" | "large";
   variant?: "text" | "outlined" | "contained";
+  onClick?: () => void;
 }
 
 const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
@@ -18,8 +19,8 @@ const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
   orientation = "horizontal",
   size = "medium",
   variant = "contained",
+  onClick,
 }: ButtonGroupProps) => {
-  //   const fullWidthClass = fullWidth ? "w-full" : "";
   const orientationClass = orientation === "vertical" ? "flex-col" : "flex-row";
   const sizeClass =
     size === "small"
@@ -29,12 +30,30 @@ const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
         : "px-3 py-2";
   const variantClass =
     variant === "outlined" ? "border" : variant === "text" ? "" : "shadow-md";
-  const colorClass =
-    color === "secondary"
-      ? "bg-gray-300 text-gray-800 hover:bg-gray-400"
-      : color === "default"
-        ? "bg-white text-gray-800 hover:bg-gray-100"
-        : "bg-blue-500 text-white hover:bg-blue-600";
+
+  let colorClass = "";
+  switch (color) {
+    case "primary":
+      colorClass = "bg-blue-500 text-white hover:bg-blue-600";
+      break;
+    case "secondary":
+      colorClass = "bg-gray-300 text-gray-800 hover:bg-gray-400";
+      break;
+    case "error":
+      colorClass = "bg-red-500 text-white hover:bg-red-600";
+      break;
+    case "info":
+      colorClass = "bg-blue-300 text-white hover:bg-blue-400";
+      break;
+    case "success":
+      colorClass = "bg-green-500 text-white hover:bg-green-600";
+      break;
+    case "warning":
+      colorClass = "bg-yellow-500 text-white hover:bg-yellow-600";
+      break;
+    default:
+      colorClass = "bg-blue-500 text-white hover:bg-blue-600";
+  }
 
   return (
     <div
@@ -48,10 +67,7 @@ const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
             disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-opacity-90"
           }`}
           disabled={disabled}
-          onClick={(e) => {
-            if (disabled) e.preventDefault();
-          }}
-          {...{}}
+          onClick={onClick}
         >
           {child}
         </button>

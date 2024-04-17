@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
     "@storybook/preset-create-react-app",
+    // '@storybook-addon-themes',
     {
       name: "@storybook/preset-create-react-app",
       options: {
@@ -18,6 +19,7 @@ const config: StorybookConfig = {
       },
     },
   ],
+
   framework: {
     name: "@storybook/nextjs",
     options: {},

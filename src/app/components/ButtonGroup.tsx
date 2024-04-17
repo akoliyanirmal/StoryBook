@@ -8,7 +8,6 @@ interface ButtonGroupProps {
   orientation?: "horizontal" | "vertical";
   size?: "small" | "medium" | "large";
   variant?: "text" | "outlined" | "contained";
-  onClick?: () => void;
 }
 
 const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
@@ -19,7 +18,6 @@ const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
   orientation = "horizontal",
   size = "medium",
   variant = "contained",
-  onClick,
 }: ButtonGroupProps) => {
   const orientationClass = orientation === "vertical" ? "flex-col" : "flex-row";
   const sizeClass =
@@ -67,7 +65,6 @@ const CustomButtonGroup: React.FC<ButtonGroupProps> = ({
             disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-opacity-90"
           }`}
           disabled={disabled}
-          onClick={onClick}
         >
           {child}
         </button>

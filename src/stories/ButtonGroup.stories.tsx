@@ -40,7 +40,6 @@ export default {
         options: ["text", "outlined", "contained"],
       },
     },
-    onClick: { action: "Button clicked" },
   },
 } as Meta;
 

@@ -7,18 +7,18 @@ export default {
   component: SimpleButton,
   argTypes: {
     children: { control: "text" },
-    disabled: { control: "boolean" },
+    // disabled: { control: "boolean" },
     endIcon: { control: "text" },
     fullWidth: { control: "boolean" },
     // fullWidthPixel: { control: "number" },
     href: { control: "text" },
     size: { control: "select", options: ["small", "medium", "large"] },
-    Colorvariant: {
+    Color: {
       control: "select",
       options: ["primary", "secondary", "danger", "success"],
     },
     startIcon: { control: "text" },
-    onClick: { action: "Button clicked" },
+    // onClick: { action: "Button clicked" },
     backgroundColor: { control: "color" },
   },
 } as Meta;
@@ -28,7 +28,7 @@ const Template: StoryFn = (args) => <SimpleButton {...args} />;
 export const BTN = Template.bind({});
 BTN.args = {
   children: "Button",
-  Colorvariant: "primary",
+  Color: "primary",
   fullWidth: false,
   // fullWidthPixel: 120,
 };

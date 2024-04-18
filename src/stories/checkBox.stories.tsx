@@ -9,6 +9,12 @@ export default {
     label: {
       control: { type: "text" },
     },
+    size: {
+      control: { type: "select", options: ["medium", "small"] },
+    },
+    // checked: {
+    //   control: { type: "boolean" },
+    // },
   },
 } as Meta;
 
@@ -19,4 +25,5 @@ CheckBoxs.args = {
   id: "checkbox",
   size: "medium",
   label: "CheckBox",
+  // checked: false,
 };

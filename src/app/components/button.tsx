@@ -32,7 +32,7 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
   backgroundColor,
   Color = "primary",
 
-  // ADDITIONAL PROPS
+  //* ADDITIONAL PROPS
   ...props
 }) => {
   const buttonSizeClass =

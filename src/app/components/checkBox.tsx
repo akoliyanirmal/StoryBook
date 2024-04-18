@@ -8,7 +8,7 @@ interface CheckBoxProps {
   //* HTML PROPS
 
   //*   autofocus?: boolean;
-  //*   checked?: boolean;
+  // checked?: boolean;
   //*   defaultChecked?: boolean;
   //*   defaultValue?: string;
   //*   disabled?: boolean;
@@ -24,6 +24,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   id,
   size = "medium",
   label = "CheckBox",
+  // checked = false,
 
   //* ADDITIONAL PROPS
   ...props
@@ -39,6 +40,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
         type="checkbox"
         id={id}
         className={`form-checkbox ${getSizeClass()}`}
+        // checked={checked}
         //* Spread all additional props
         {...props}
       />

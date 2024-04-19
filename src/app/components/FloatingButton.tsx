@@ -12,7 +12,7 @@ export interface FabProps {
     | "warning";
   label?: string;
 
-  //* HTML PROPS IF YOU WANT TO USE THEM
+  //! HTML PROPS IF YOU WANT TO USE THEM
 
   //*   align?: "left" | "center" | "right";
   //*   fillMode?: "extended" | "normal";

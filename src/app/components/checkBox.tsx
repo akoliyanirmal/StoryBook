@@ -5,10 +5,10 @@ interface CheckBoxProps {
   size?: "medium" | "small";
   label?: string;
 
-  //* HTML PROPS
+  //! HTML PROPS
 
   //*   autofocus?: boolean;
-  // checked?: boolean;
+  //*   checked?: boolean;
   //*   defaultChecked?: boolean;
   //*   defaultValue?: string;
   //*   disabled?: boolean;

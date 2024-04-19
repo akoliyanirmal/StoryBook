@@ -8,9 +8,8 @@ interface SimpleButtonProps {
   size?: "small" | "medium" | "large";
   startIcon?: React.ReactNode;
   backgroundColor?: string;
-  Color?: "primary" | "secondary" | "danger" | "success";
 
-  //* HTML PROPS
+  //! HTML PROPS
 
   //* formAction?: string;
   //* formEncType?: string;
@@ -29,8 +28,7 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
   href,
   size = "small",
   startIcon,
-  backgroundColor,
-  Color = "primary",
+  backgroundColor = "blue", // Set default color to blue
 
   //* ADDITIONAL PROPS
   ...props
@@ -42,13 +40,6 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
     ? getContrastColor(backgroundColor)
     : "#FFFFFF";
 
-  const ColorvariantClasses = {
-    primary: backgroundColor ? "" : "bg-blue-600 text-white",
-    secondary: backgroundColor ? "" : "bg-gray-700 text-white",
-    danger: backgroundColor ? "" : "bg-red-700 text-white",
-    success: backgroundColor ? "" : "bg-green-700 text-white",
-  };
-
   const fullWidthClass = fullWidth ? "w-full" : "";
 
   const hoverEffect = "hover:bg-opacity-90";
@@ -56,7 +47,7 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
   return (
     <button
       className={`rounded-lg bg-slate-100 font-bold text-gray-900
-       ${fullWidthClass} ${buttonSizeClass}  ${ColorvariantClasses[Color]} ${hoverEffect}`}
+       ${fullWidthClass} ${buttonSizeClass} ${hoverEffect}`}
       style={{
         backgroundColor,
         color: textColor,

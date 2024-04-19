@@ -7,7 +7,7 @@ interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   disableUnderline?: boolean;
   hiddenLabel?: boolean;
 
-  //* HTML PROPS IF YOU WANT TO USE THEM
+  //! HTML PROPS IF YOU WANT TO USE THEM
 
   //* accept?: string;
   //* alt?: string;

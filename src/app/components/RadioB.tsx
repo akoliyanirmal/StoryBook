@@ -1,5 +1,4 @@
 import React from "react";
-
 export interface RadioProps {
   options: { label: string; value: string }[];
   selectedOption?: string;

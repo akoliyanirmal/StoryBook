@@ -46,7 +46,7 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
 
   return (
     <button
-      className={`rounded-lg bg-slate-100 font-bold text-gray-900
+      className={`rounded-lg bg-slate-100 dark:bg-red-400 font-bold text-gray-900
        ${fullWidthClass} ${buttonSizeClass} ${hoverEffect}`}
       style={{
         backgroundColor,

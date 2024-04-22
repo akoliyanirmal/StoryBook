@@ -25,5 +25,4 @@ export const BTN = Template.bind({});
 BTN.args = {
   children: "Button",
   fullWidth: false,
-  // fullWidthPixel: 120,
 };

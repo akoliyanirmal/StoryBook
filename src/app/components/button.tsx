@@ -28,7 +28,7 @@ const SimpleButton: React.FC<SimpleButtonProps> = ({
   href,
   size = "small",
   startIcon,
-  backgroundColor = "blue", // Set default color to blue
+  backgroundColor = "blue", //* Set default color to blue
 
   //* ADDITIONAL PROPS
   ...props

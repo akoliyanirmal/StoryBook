@@ -1,90 +1,86 @@
 import React, { useState } from "react";
 
 export interface TransferListProps {
-  leftItems: string[];
-  rightItems: string[];
-  onTransferLeft: (names: string[]) => void;
-  onTransferRight: (names: string[]) => void;
+  items: string[];
+  onTransfer: (item: string, direction: "left" | "right") => void;
 }
 
-const TransferList: React.FC<TransferListProps> = ({
-  leftItems,
-  rightItems,
-  onTransferLeft,
-  onTransferRight,
-}) => {
-  const [selectedLeft, setSelectedLeft] = useState<string[]>([]);
-  const [selectedRight, setSelectedRight] = useState<string[]>([]);
+const TransferList: React.FC<TransferListProps> = ({ items, onTransfer }) => {
+  const [leftItems, setLeftItems] = useState(items);
+  const [rightItems, setRightItems] = useState<string[]>([
+    "Samara",
+    "Tony",
+    "Tessa",
+  ]);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
-  const handleSelectLeft = (name: string) => {
-    const newSelectedLeft = [...selectedLeft, name];
-    setSelectedLeft(newSelectedLeft);
+  const handleItemClick = (item: string) => {
+    setSelectedItem(item);
   };
 
-  const handleSelectRight = (name: string) => {
-    const newSelectedRight = [...selectedRight, name];
-    setSelectedRight(newSelectedRight);
-  };
-
-  const handleTransferLeft = () => {
-    onTransferLeft(selectedRight);
-    setSelectedRight([]);
-  };
-
-  const handleTransferRight = () => {
-    onTransferRight(selectedLeft);
-    setSelectedLeft([]);
+  const handleTransfer = (direction: "left" | "right") => {
+    if (selectedItem) {
+      if (direction === "left") {
+        setRightItems(rightItems.filter((i) => i !== selectedItem));
+        setLeftItems([...leftItems, selectedItem]);
+      } else if (direction === "right") {
+        setLeftItems(leftItems.filter((i) => i !== selectedItem));
+        setRightItems([...rightItems, selectedItem]);
+      }
+      onTransfer(selectedItem, direction);
+      setSelectedItem(null);
+    }
   };
 
   return (
-    <div className="flex justify-center">
-      <div className="w-1/3 border border-gray-300 rounded-md mr-4">
-        <h2 className="text-center py-2 bg-gray-200">Left List</h2>
-        <ul>
-          {leftItems.map((name) => (
-            <li
-              key={name}
-              className={`cursor-pointer p-2 hover:bg-gray-100 ${
-                selectedLeft.includes(name) ? "bg-blue-200" : ""
-              }`}
-              onClick={() => handleSelectLeft(name)}
-            >
-              {name}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex flex-col justify-center">
-        <button
-          className="m-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          onClick={handleTransferRight}
-          disabled={selectedLeft.length === 0}
-        >
-          &gt;&gt;
-        </button>
-        <button
-          className="m-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          onClick={handleTransferLeft}
-          disabled={selectedRight.length === 0}
-        >
-          &lt;&lt;
-        </button>
-      </div>
-      <div className="w-1/3 border border-gray-300 rounded-md ml-4">
-        <h2 className="text-center py-2 bg-gray-200">Right List</h2>
-        <ul>
-          {rightItems.map((name) => (
-            <li
-              key={name}
-              className={`cursor-pointer p-2 hover:bg-gray-100 ${
-                selectedRight.includes(name) ? "bg-blue-200" : ""
-              }`}
-              onClick={() => handleSelectRight(name)}
-            >
-              {name}
-            </li>
-          ))}
-        </ul>
+    <div className="flex flex-col space-y-4">
+      <div className="flex flex-row justify-between items-center">
+        <div className="w-1/2">
+          <h3 className="text-lg font-bold mb-2">Left Items</h3>
+          <ul className="bg-gray-100 p-4 rounded-md">
+            {leftItems.map((item) => (
+              <li
+                key={item}
+                className={`cursor-pointer p-2 rounded ${
+                  selectedItem === item ? "bg-blue-200" : "hover:bg-gray-200"
+                }`}
+                onClick={() => handleItemClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col items-center justify-center w-1/12">
+          <button
+            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+            onClick={() => handleTransfer("right")}
+          >
+            &gt;
+          </button>
+          <button
+            className="mt-4 px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+            onClick={() => handleTransfer("left")}
+          >
+            &lt;
+          </button>
+        </div>
+        <div className="w-1/2">
+          <h3 className="text-lg font-bold mb-2">Right Items</h3>
+          <ul className="bg-gray-100 p-4 rounded-md">
+            {rightItems.map((item) => (
+              <li
+                key={item}
+                className={`cursor-pointer p-2 rounded ${
+                  selectedItem === item ? "bg-blue-200" : "hover:bg-gray-200"
+                }`}
+                onClick={() => handleItemClick(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { StoryFn, Meta } from "@storybook/react";
-import Badge from "@/app/components/Badge";
+import Badge, { BadgeProps } from "@/app/components/Badge";
 
 export default {
   title: "Components/Badge",
@@ -12,12 +12,33 @@ export default {
         min: -100,
       },
     },
+    color: {
+      control: {
+        type: "select",
+        options: [
+          "primary",
+          "secondary",
+          "error",
+          "info",
+          "success",
+          "warning",
+        ],
+      },
+    },
+    shape: {
+      control: {
+        type: "select",
+        options: ["circular", "rectangular"],
+      },
+    },
   },
 } as Meta;
 
-const Template: StoryFn = (args) => <Badge count={0} {...args} />;
+const Template: StoryFn<BadgeProps> = (args) => <Badge {...args} />;
 
 export const BadgeIcon = Template.bind({});
 BadgeIcon.args = {
   count: 0,
+  color: "primary",
+  shape: "circular",
 };

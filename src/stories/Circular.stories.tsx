@@ -22,5 +22,5 @@ export default {
 
 const Template: StoryFn<CircularProps> = (args) => <Circular {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const Circle = Template.bind({});
+Circle.args = {};

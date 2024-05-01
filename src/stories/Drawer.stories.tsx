@@ -9,5 +9,7 @@ export default {
 
 const Template: StoryFn = (args) => <Drawer {...args} />;
 
-export const DrawerList = Template.bind({});
-DrawerList.args = {};
+export const DrawerWithAnchor = Template.bind({});
+DrawerWithAnchor.args = {
+  anchor: "right",
+};

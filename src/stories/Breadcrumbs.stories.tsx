@@ -1,27 +1,19 @@
-import React from "react";
+import BasicBreadcrumbs, {
+  BasicBreadcrumbsProps,
+} from "@/app/components/Breadcrumbs";
 import { Meta, StoryFn } from "@storybook/react";
-import Breadcrumbs, { BreadcrumbsProps } from "@/app/components/Breadcrumbs";
+import React from "react";
 
 export default {
-  title: "Components/Breadcrumbs",
-  component: Breadcrumbs,
-  argTypes: {
-    links: {
-      control: {
-        type: "object",
-      },
-    },
-  },
+  title: "Components/BasicBreadcrumbs",
+  component: BasicBreadcrumbs,
 } as Meta;
 
-const Template: StoryFn<BreadcrumbsProps> = (args) => <Breadcrumbs {...args} />;
+const Template: StoryFn<BasicBreadcrumbsProps> = (args) => (
+  <BasicBreadcrumbs {...args} />
+);
 
-export const Basic = Template.bind({});
-Basic.args = {
-  links: [
-    { text: "Home", href: "/" },
-    { text: "Products", href: "/products" },
-    { text: "Category", href: "/products/category" },
-    { text: "Product", href: "/products/category/product" },
-  ],
+export const BasicBreadcrumb = Template.bind({});
+BasicBreadcrumb.args = {
+  items: [{ label: "MUI" }, { label: "Core" }, { label: "Breadcrumbs" }],
 };

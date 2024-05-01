@@ -1,27 +1,36 @@
 import React from "react";
+import { FaAngleRight } from "react-icons/fa";
 
-interface Breadcrumb {
-  text: string;
-  href: string;
+export interface BreadcrumbItem {
+  label: string;
 }
 
-export interface BreadcrumbsProps {
-  links: Breadcrumb[];
+export interface BasicBreadcrumbsProps {
+  items: BreadcrumbItem[];
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ links }) => {
+const BasicBreadcrumbs: React.FC<BasicBreadcrumbsProps> = ({ items }) => {
   return (
-    <nav className="flex" aria-label="breadcrumbs">
-      {links.map((link, index) => (
-        <span key={index}>
-          <a href={link.href} className="text-blue-500 hover:underline">
-            {link.text}
-          </a>
-          {index !== links.length - 1 && <span className="mx-2">/</span>}
-        </span>
-      ))}
+    <nav>
+      <div className="flex space-x-2">
+        {items.map((item, index) => (
+          <React.Fragment key={index}>
+            {index > 0 && (
+              <div className="border-b border-gray-300 pb-1 mx-2" />
+            )}
+            <li className="flex items-center">
+              <button className="text-black-500 hover:underline focus:underline cursor-pointer">
+                {item.label}
+              </button>
+              {index !== items.length - 1 && (
+                <FaAngleRight className="w-4 h-4 mx-2" />
+              )}
+            </li>
+          </React.Fragment>
+        ))}
+      </div>
     </nav>
   );
 };
 
-export default Breadcrumbs;
+export default BasicBreadcrumbs;

@@ -5,8 +5,41 @@ import Pagination from "@/app/components/Pagination";
 export default {
   title: "Components/Pagination",
   component: Pagination,
+  argTypes: {
+    color: {
+      control: {
+        type: "select",
+        options: ["primary", "secondary", "standard"],
+      },
+    },
+    shape: {
+      control: {
+        type: "select",
+        options: ["circular", "rounded"],
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["small", "medium", "large"],
+      },
+    },
+  },
 } as Meta;
 
-const Template: StoryFn = (args) => <Pagination {...args} />;
+interface PaginationStoryProps {
+  color: "primary" | "secondary" | "standard";
+  shape: "circular" | "rounded";
+  size: "small" | "medium" | "large";
+}
 
-export const Default = Template.bind({});
+const Template: StoryFn<PaginationStoryProps> = (args) => (
+  <Pagination {...args} />
+);
+
+export const PaginationNumber = Template.bind({});
+PaginationNumber.args = {
+  color: "standard",
+  shape: "rounded",
+  size: "medium",
+};
